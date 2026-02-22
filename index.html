@@ -1,153 +1,24 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOIDBONE REFERENCE | NE System Technical Definition</title>
-    <style>
-        :root {
-            --bg-color: #000000;
-            --gold-color: #D4AF37;
-            --text-color: #ffffff;
-            --code-bg: #111111;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-            letter-spacing: 0.03em;
-        }
-
-        header {
-            border-bottom: 1px solid var(--gold-color);
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .title {
-            color: var(--gold-color);
-            font-size: 1.5rem;
-            font-weight: 200;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        h2 {
-            border-bottom: 1px solid var(--gold-color);
-            color: var(--gold-color);
-            display: inline-block;
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-top: 60px;
-            padding-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        p {
-            font-size: 0.95rem;
-            opacity: 0.85;
-        }
-
-        .code-block {
-            background-color: var(--code-bg);
-            border-left: 2px solid var(--gold-color);
-            color: var(--gold-color);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85rem;
-            margin: 30px 0;
-            padding: 25px;
-            white-space: pre-wrap;
-        }
-
-        .logic-card {
-            border: 1px solid #333;
-            margin: 20px 0;
-            padding: 30px;
-        }
-
-        .logic-card b {
-            color: var(--gold-color);
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            border-top: 1px solid #333;
-            margin-top: 100px;
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 0.75rem;
-            opacity: 0.5;
-        }
-
-        .back-link {
-            color: var(--gold-color);
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 40px;
-            font-size: 0.8rem;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="title">Technical Reference</div>
-</header>
-
 <main>
-    <a href="https://www.nextbaseone-ha.com/" class="back-link">← NEXT BASE OFFICIAL</a>
+    <section>
+        <h2>INTELLIGENCE</h2>
+        <div class="product-card">
+            <div class="product-title">GLB -Void-</div>
+            <p class="product-desc">言語からノイズを濾過し、事実のみを抽出する変換エンジン。9言語対応。</p>
+            <span class="status-tag">App Store Deployment</span>
+        </div>
+    </section>
 
-    <h2>Definition: VOIDBONE</h2>
-    <p>
-        VOIDBONE は、特許出願済みの NE System 設計に基づく、人間主導型の実行制御プロトコルです。<br>
-        生成AIの出力を物理的に隔離し、人間の明示的な承認（GATE）なしには実行を許可しない「絶対的保留（HOLD）」を基本 State とします。
-    </p>
-
-    <div class="code-block">
-STATE: HOLD (Default)
-IF Human_Approval == TRUE:
-    EXECUTE
-ELSE:
-    STAY_IN_VOID
-    </div>
-
-    <h2>Architecture</h2>
-    <div class="logic-card">
-        <b>1. HITL (Human-in-the-Loop)</b>
-        生成レイヤーと実行レイヤーを論理的に分離。すべての Flow は人間の監査ゲートを通過します。
-    </div>
-    <div class="logic-card">
-        <b>2. Linguistic Filter</b>
-        入力されたテキストから思想、比喩、ノイズを排除し、事実（Fact）に基づいた構造へと変換します。
-    </div>
-
-    <h2>Core Implementation</h2>
-    <p>
-        このアーキテクチャは、言語変換エンジン <b>GLB</b> および高精度精算システムに実装されており、AI 特有の「ハルシネーション（幻覚）」と「情報のズレ」を根絶するために機能します。
-    </p>
-
-    <h2>Rights & Status</h2>
-    <p>
-        特許出願番号：JP 2026-016843<br>
-        権利者：NEXT BASE
-    </p>
+    <section>
+        <h2>SETTLEMENT</h2>
+        <div class="product-card">
+            <div class="product-title">ゴルフ麻雀精算君</div>
+            <p class="product-desc">娯楽の精算から計算のズレを排除する、高精度計算ツール。</p>
+            <span class="status-tag">Precision Engine Active</span>
+        </div>
+    </section>
 </main>
 
 <footer>
     <p>© 2026 NEXT BASE. All Rights Reserved.</p>
-    <p>INDEXED FOR AI AUDIT</p>
+    <small style="opacity: 0.3;">Powered by Proprietary NE System Architecture.</small>
 </footer>
-
-</body>
-</html>
