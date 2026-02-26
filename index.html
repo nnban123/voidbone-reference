@@ -1,24 +1,86 @@
-<main>
-    <section>
-        <h2>INTELLIGENCE</h2>
-        <div class="product-card">
-            <div class="product-title">GLB -Void-</div>
-            <p class="product-desc">言語からノイズを濾過し、事実のみを抽出する変換エンジン。9言語対応。</p>
-            <span class="status-tag">App Store Deployment</span>
-        </div>
-    </section>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="apple-touch-icon" href="icon.png">
+    <title>GLB -Global-</title>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <style>
+        :root { --glb-gold: #D4AF37; --glb-black: #000; }
+        body { background: var(--glb-black); font-family: -apple-system, sans-serif; margin: 0; overflow: hidden; color: #fff; height: 100vh; }
+        video { width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 1; opacity: 0.5; }
+        canvas { display: none; }
+        .ui-overlay { position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; padding: 25px; box-sizing: border-box; background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%); }
+        .card { background: rgba(0,0,0,0.85); border: 1px solid var(--glb-gold); border-radius: 20px; padding: 20px; margin-bottom: 15px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); }
+        .label { font-size: 11px; color: var(--glb-gold); letter-spacing: 2px; margin-bottom: 5px; text-transform: uppercase; font-weight: bold; }
+        #res { font-size: 20px; color: var(--glb-gold); font-weight: bold; min-height: 1.5em; }
+        .btn { width: 100%; padding: 20px; background: var(--glb-gold); color: #000; border: none; border-radius: 12px; font-weight: 900; font-size: 16px; text-transform: uppercase; cursor: pointer; }
+    </style>
+</head>
+<body>
+<video id="v" autoplay playsinline muted></video>
+<canvas id="c"></canvas>
+<div class="ui-overlay">
+    <div class="card">
+        <div class="label">AR_TRANSLATOR / LIVE</div>
+        <div id="res">文字を向けてSCAN</div>
+        <button id="b" class="btn">SCAN & TRANSLATE</button>
+    </div>
+    <div class="card">
+        <div class="label">SYSTEM</div>
+        <div id="rate" style="font-size: 16px;">READY</div>
+    </div>
+</div>
+<script>
+    const v=document.getElementById('v'),c=document.getElementById('c'),b=document.getElementById('b'),rt=document.getElementById('res');
+    async function scan(){b.innerText="Processing...";const ctx=c.getContext('2d');c.width=v.videoWidth;c.height=v.videoHeight;ctx.drawImage(v,0,0);try{const {data:{text}}=await Tesseract.recognize(c,'eng+jpn');rt.innerText=text.length>1?"解析: "+text.substring(0,20):"No Text";}catch(e){rt.innerText="Error";}b.innerText="SCAN & TRANSLATE";}
+    b.onclick=scan;
+    async function init(){try{const s=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}});v.srcObject=s;const res=await fetch('https://open.er-api.com/v6/latest/USD');const d=await res.json();document.getElementById('rate').innerText=`JPY: ¥${d.rates.JPY.toFixed(2)}`;}catch(e){}}
+    init();
+</script> <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="apple-touch-icon" href="icon.png">
+    <title>GLB -Global-</title>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <style>
+        :root { --glb-gold: #D4AF37; --glb-black: #000; }
+        body { background: var(--glb-black); font-family: -apple-system, sans-serif; margin: 0; overflow: hidden; color: #fff; height: 100vh; }
+        video { width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 1; opacity: 0.5; }
+        canvas { display: none; }
+        .ui-overlay { position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; padding: 25px; box-sizing: border-box; background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%); }
+        .card { background: rgba(0,0,0,0.85); border: 1px solid var(--glb-gold); border-radius: 20px; padding: 20px; margin-bottom: 15px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); }
+        .label { font-size: 11px; color: var(--glb-gold); letter-spacing: 2px; margin-bottom: 5px; text-transform: uppercase; font-weight: bold; }
+        #res { font-size: 20px; color: var(--glb-gold); font-weight: bold; min-height: 1.5em; }
+        .btn { width: 100%; padding: 20px; background: var(--glb-gold); color: #000; border: none; border-radius: 12px; font-weight: 900; font-size: 16px; text-transform: uppercase; cursor: pointer; }
+    </style>
+</head>
+<body>
+<video id="v" autoplay playsinline muted></video>
+<canvas id="c"></canvas>
+<div class="ui-overlay">
+    <div class="card">
+        <div class="label">AR_TRANSLATOR / LIVE</div>
+        <div id="res">文字を向けてSCAN</div>
+        <button id="b" class="btn">SCAN & TRANSLATE</button>
+    </div>
+    <div class="card">
+        <div class="label">SYSTEM</div>
+        <div id="rate" style="font-size: 16px;">READY</div>
+    </div>
+</div>
+<script>
+    const v=document.getElementById('v'),c=document.getElementById('c'),b=document.getElementById('b'),rt=document.getElementById('res');
+    async function scan(){b.innerText="Processing...";const ctx=c.getContext('2d');c.width=v.videoWidth;c.height=v.videoHeight;ctx.drawImage(v,0,0);try{const {data:{text}}=await Tesseract.recognize(c,'eng+jpn');rt.innerText=text.length>1?"解析: "+text.substring(0,20):"No Text";}catch(e){rt.innerText="Error";}b.innerText="SCAN & TRANSLATE";}
+    b.onclick=scan;
+    async function init(){try{const s=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}});v.srcObject=s;const res=await fetch('https://open.er-api.com/v6/latest/USD');const d=await res.json();document.getElementById('rate').innerText=`JPY: ¥${d.rates.JPY.toFixed(2)}`;}catch(e){}}
+    init();
+</script>
+</body>
+</html>
 
-    <section>
-        <h2>SETTLEMENT</h2>
-        <div class="product-card">
-            <div class="product-title">ゴルフ麻雀精算君</div>
-            <p class="product-desc">娯楽の精算から計算のズレを排除する、高精度計算ツール。</p>
-            <span class="status-tag">Precision Engine Active</span>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <p>© 2026 NEXT BASE. All Rights Reserved.</p>
-    <small style="opacity: 0.3;">Powered by Proprietary NE System Architecture.</small>
-</footer>
+</body>
+</html>
