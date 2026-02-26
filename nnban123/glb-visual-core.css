@@ -1,0 +1,78 @@
+/* * GLB Visual Standard v1.0 
+ * Pattern: Black & Gold - Instrument Grade
+ * Focus: High-Contrast AR Overlay
+ */
+
+:root {
+    --glb-gold: #D4AF37; /* Metallic Gold */
+    --glb-black: #000000;
+    --glb-surface: rgba(0, 0, 0, 0.85);
+    --glb-border: 1px solid var(--glb-gold);
+}
+
+/* Base UI State */
+body {
+    background: var(--glb-black);
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* AR Overlay Layer */
+.glb-ui-overlay {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    height: 100vh;
+    box-sizing: border-box;
+    background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 50%);
+}
+
+/* Card Module (The Instrument) */
+.glb-card {
+    background: var(--glb-surface);
+    border: var(--glb-border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Typography Pattern */
+.glb-label {
+    font-size: 10px;
+    color: var(--glb-gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.glb-value {
+    font-size: 40px;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 16px;
+}
+
+/* Action Pattern (Stripe Compatible) */
+.glb-btn-gold {
+    width: 100%;
+    padding: 18px;
+    background: var(--glb-gold);
+    color: var(--glb-black);
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease;
+}
+
+.glb-btn-gold:active {
+    opacity: 0.7;
+}
